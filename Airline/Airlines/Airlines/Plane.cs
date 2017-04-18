@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    interface IPlane
+    abstract class Plane
     {
         string Name { get; }
         int CapacityOfFuelTank { get; }
-        int RangeOfFlight { get;  }
+        int RangeOfFlight { get; }
+
+        
+
     }
 }
