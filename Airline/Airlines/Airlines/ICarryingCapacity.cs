@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    class Program
+    interface ICarryingCapacity
     {
-        static void Main(string[] args)
-        {
-            
-
-            Console.ReadKey();
-
-
-        }
+        int CarryingCapacity { get; }
     }
 }

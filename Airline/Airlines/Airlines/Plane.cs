@@ -6,13 +6,26 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    abstract class Plane
+    public abstract class Plane
     {
-        string Name { get; }
-        int CapacityOfFuelTank { get; }
-        int RangeOfFlight { get; }
+        protected string Name { get; set; }
+        protected string Model { get; set; }        
+        protected double FlightLength { get; set; }
+        protected double TankVolume { get; set; }
 
-        
+        public Plane(string name, string model, double flightLength, double tankVolume)
+        {
+            Name = name;
+            Model = model;
+            FlightLength = flightLength;
+            TankVolume = tankVolume;
+        }
+
+        public Plane()
+        {
+
+        }
+   
 
     }
 }

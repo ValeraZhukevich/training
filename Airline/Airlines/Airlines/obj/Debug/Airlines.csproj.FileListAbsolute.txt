@@ -1,0 +1,6 @@
+C:\myGit\Airline\Airlines\Airlines\bin\Debug\Airlines.exe.config
+C:\myGit\Airline\Airlines\Airlines\bin\Debug\Airlines.exe
+C:\myGit\Airline\Airlines\Airlines\bin\Debug\Airlines.pdb
+C:\myGit\Airline\Airlines\Airlines\obj\Debug\Airlines.csprojResolveAssemblyReference.cache
+C:\myGit\Airline\Airlines\Airlines\obj\Debug\Airlines.exe
+C:\myGit\Airline\Airlines\Airlines\obj\Debug\Airlines.pdb
