@@ -8,7 +8,7 @@ namespace Airlines
 {
     class PassengerAirplane : Plane, IPassengerCapacity
     {
-        public int PassangerCapacity { get; protected set; }
+        public int PassangerCapacity { get; set; }
 
         public PassengerAirplane(string name, string model, double flightLength, double tankVolume)
             : base(name, model, flightLength, tankVolume)

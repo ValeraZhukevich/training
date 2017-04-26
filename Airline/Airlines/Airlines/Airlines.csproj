@@ -44,10 +44,11 @@
   <ItemGroup>
     <Compile Include="CargoAirplane.cs" />
     <Compile Include="CombiAirplane.cs" />
+    <Compile Include="IAirlines.cs" />
     <Compile Include="ICarryingCapacity.cs" />
     <Compile Include="IPassengerCapacity.cs" />
     <Compile Include="PassengerAirplane.cs" />
-    <Compile Include="Plane.cs" />
+    <Compile Include="IPlane.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
