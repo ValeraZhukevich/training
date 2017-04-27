@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    interface IAirlines
+    interface IAirlines : ICollection<IPlane>
     {
         ICollection<IPlane> Airliners { get; }
         string Name { get; }
