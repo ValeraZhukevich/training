@@ -43,7 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CargoAirplane.cs" />
-    <Compile Include="IAirlines.cs" />
+    <Compile Include="ComparerByFlightLength.cs" />
+    <Compile Include="Airlines.cs" />
     <Compile Include="ICarryingCapacity.cs" />
     <Compile Include="IPassengerCapacity.cs" />
     <Compile Include="PassengerAirplane.cs" />

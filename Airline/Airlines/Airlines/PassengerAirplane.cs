@@ -9,6 +9,7 @@ namespace Airlines
     class PassengerAirplane : Plane, IPassengerCapacity
     {
         public int PassangerCapacity { get; set; }
+   
 
         public PassengerAirplane(string id, string model, int flightLength, double fuelConsumptionPerKM)
             : base(id, model, flightLength, fuelConsumptionPerKM)
@@ -65,7 +66,6 @@ namespace Airlines
             return string.Format("id: {0}; model: {1}; fligth length: {2}; capacity of passanger: {3}, fuel consumption per km: {4} \n",
                 ID, Model, FlightLength, PassangerCapacity, FuelConsumptionPerKM);
         }
-
 
     }
 }

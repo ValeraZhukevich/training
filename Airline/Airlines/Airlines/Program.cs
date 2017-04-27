@@ -11,10 +11,21 @@ namespace Airlines
         static void Main(string[] args)
         {
             PassengerAirplane a380 = new PassengerAirplane("2548", "a380");
-            Console.WriteLine(a380);
+            
 
             CargoAirplane a330 = new CargoAirplane("2658", "a330-200f");
-            Console.WriteLine(a330);
+            
+
+            Airlines belavia = new Airlines();
+            belavia.Add(a380);
+            belavia.Add(a330);
+
+            foreach(Plane a in belavia)
+            {
+                Console.WriteLine(a);
+            }
+
+            
             
 
             
