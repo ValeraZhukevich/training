@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    interface ICarryingCapacity : IPlane
+    interface ICarryingCapacity 
     {
         int CarryingCapacity { get; }
     }

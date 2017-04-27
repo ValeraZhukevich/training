@@ -10,8 +10,12 @@ namespace Airlines
     {
         static void Main(string[] args)
         {
-            PassengerAirplane a380 = new PassengerAirplane();
-            a380.PassangerCapacity = 856;
+            PassengerAirplane a380 = new PassengerAirplane("2548", "a380");
+            Console.WriteLine(a380);
+
+            CargoAirplane a330 = new CargoAirplane("2658", "a330-200f");
+            Console.WriteLine(a330);
+            
 
             
 

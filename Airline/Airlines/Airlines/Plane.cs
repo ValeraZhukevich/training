@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    interface IPlane
+    public abstract class Plane
     {
-        string Name { get; set; }
-        string Model { get; set; }        
-        int FlightLength { get; set; }
-        int TankVolume { get; set; }
+        public string ID { get; protected set; }
+        public string Model { get; protected set; }        
+        public int FlightLength { get; protected set; }
+        public double FuelConsumptionPerKM { get; protected set; }
+    
+        public Plane(string iD, string model, int flightLength, double fuelConsumptionPerKM)
+        {
+            ID = iD;
+            Model = model;
+            FlightLength = flightLength;
+            FuelConsumptionPerKM = fuelConsumptionPerKM;
+        }
+
+        public Plane()
+        {
+
+        }
+
+
 
         
    

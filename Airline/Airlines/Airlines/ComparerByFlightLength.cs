@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    interface IPassengerCapacity 
+    class ComparerByFlightLength
     {
-        int PassangerCapacity { get; }
     }
 }

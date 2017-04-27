@@ -6,12 +6,5 @@ using System.Threading.Tasks;
 
 namespace Airlines
 {
-    interface IAirlines : ICollection<IPlane>
-    {
-        ICollection<IPlane> Airliners { get; }
-        string Name { get; }
-        string Model { get; }
-        int FlightLength { get; }
-        int TankVolume { get; }
-    }
+   
 }
