@@ -42,13 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CargoAirplane.cs" />
-    <Compile Include="ComparerByFlightLength.cs" />
-    <Compile Include="Airlines.cs" />
-    <Compile Include="ICarryingCapacity.cs" />
-    <Compile Include="IPassengerCapacity.cs" />
-    <Compile Include="PassengerAirplane.cs" />
-    <Compile Include="Plane.cs" />
+    <Compile Include="Classes\CargoAirplane.cs" />
+    <Compile Include="Classes\ComparerByFlightLength.cs" />
+    <Compile Include="Classes\Airlines.cs" />
+    <Compile Include="Interfaces\ICarryingCapacity.cs" />
+    <Compile Include="Interfaces\IPassengerCapacity.cs" />
+    <Compile Include="Classes\PassengerAirplane.cs" />
+    <Compile Include="Classes\Plane.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

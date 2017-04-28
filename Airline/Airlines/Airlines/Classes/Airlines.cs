@@ -23,12 +23,12 @@ namespace Airlines
         
         private ICollection<Plane> airliners = new List<Plane>();
 
-        public List<Plane> FindSuitablePlane(double fuelConsumptionPerKM)
+        public List<Plane> ToFindSuitablePlane(double fuelConsumptionPerKM)
         {
             List<Plane> suitPlanes = new List<Plane>();
             foreach(Plane a in airliners)
             {
-                if(fuelConsumptionPerKM < a.FuelConsumptionPerKM)
+                if(a.FuelConsumptionPerKM <= fuelConsumptionPerKM)
                 {
                     suitPlanes.Add(a);
                 }
@@ -41,7 +41,7 @@ namespace Airlines
         int totalPassangerCapacity = 0;
         int totalCarryingCapacity = 0;
 
-        public int GetTotalPassangerCapacity(List<Plane> airliners)
+        public int GetTotalPassangerCapacity()
         {
             foreach (Plane a in airliners)
             {
@@ -54,7 +54,7 @@ namespace Airlines
             return totalPassangerCapacity;
         }
 
-        public int GetTotalCarryingCapacity(List<Plane> airliners)
+        public int GetTotalCarryingCapacity()
         {
             foreach (Plane a in airliners)
             {

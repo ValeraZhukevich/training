@@ -49,7 +49,7 @@ namespace Airlines
                     break;
 
                 case "747":
-                    FlightLength = 1400;
+                    FlightLength = 14000;
                     PassangerCapacity = 524;
                     FuelConsumptionPerKM = 17.14;
                     break;
@@ -63,7 +63,7 @@ namespace Airlines
 
         public override string ToString()
         {
-            return string.Format("model: {1}\n id: {0}\n fligth length: {2}\n capacity of passanger: {3}\n fuel consumption per km: {4} \n",
+            return string.Format(" model: {1}\n id: {0}\n fligth length: {2}\n capacity of passanger: {3}\n fuel consumption per km: {4} \n",
                 ID, Model, FlightLength, PassangerCapacity, FuelConsumptionPerKM);
         }
 
