@@ -9,10 +9,63 @@ namespace Airlines
 {
     public class Airlines : ICollection<Plane>
     {
-        int totalLoadCapacity = 0;
-        int totalPassangerCapacity = 0;
+        public string Name { get;  private set; }
 
+        public Airlines(string name)
+        {
+            Name = name;
+        }
+
+        public Airlines()
+        {
+
+        }
+        
         private ICollection<Plane> airliners = new List<Plane>();
+
+        public List<Plane> FindSuitablePlane(double fuelConsumptionPerKM)
+        {
+            List<Plane> suitPlanes = new List<Plane>();
+            foreach(Plane a in airliners)
+            {
+                if(fuelConsumptionPerKM < a.FuelConsumptionPerKM)
+                {
+                    suitPlanes.Add(a);
+                }
+            }
+
+            return suitPlanes;
+
+        }
+
+        int totalPassangerCapacity = 0;
+        int totalCarryingCapacity = 0;
+
+        public int GetTotalPassangerCapacity(List<Plane> airliners)
+        {
+            foreach (Plane a in airliners)
+            {
+                if (a is IPassengerCapacity)
+                {
+                    IPassengerCapacity b = (IPassengerCapacity)a;
+                    totalPassangerCapacity += b.PassangerCapacity;
+                }
+            }
+            return totalPassangerCapacity;
+        }
+
+        public int GetTotalCarryingCapacity(List<Plane> airliners)
+        {
+            foreach (Plane a in airliners)
+            {
+                if (a is ICarryingCapacity)
+                {
+                    ICarryingCapacity b = (ICarryingCapacity)a;
+                    totalCarryingCapacity += b.CarryingCapacity;
+                }
+            }
+            return totalCarryingCapacity;
+        }
 
         public int Count
         {
@@ -71,6 +124,8 @@ namespace Airlines
         {
             Sort(new ComparerByFlightLength());
         }
+
+        
 
        
 

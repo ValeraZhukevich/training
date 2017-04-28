@@ -52,7 +52,7 @@ namespace Airlines
 
         public override string ToString()
         {
-            return string.Format("id: {0}; model: {1}; fligth length: {2}; cargo capacity: {3}, fuel consumption per km: {4}\n",
+            return string.Format("id: {0}\n model: {1}\n fligth length: {2}\n cargo capacity: {3}\n fuel consumption per km: {4}\n",
                 ID, Model, FlightLength, CarryingCapacity, FuelConsumptionPerKM);
         }
 

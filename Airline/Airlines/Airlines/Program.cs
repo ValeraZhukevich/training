@@ -10,17 +10,18 @@ namespace Airlines
     {
         static void Main(string[] args)
         {
-            PassengerAirplane a380 = new PassengerAirplane("2548", "a380");
-            
-
-            CargoAirplane a330 = new CargoAirplane("2658", "a330-200f");
-            
 
             Airlines belavia = new Airlines();
-            belavia.Add(a380);
-            belavia.Add(a330);
 
-            foreach(Plane a in belavia)
+            belavia.Add(new PassengerAirplane("25687", "a320"));
+            belavia.Add(new PassengerAirplane("10236", "a380"));
+            belavia.Add(new PassengerAirplane("98571", "747"));
+            belavia.Add(new CargoAirplane("54782", "a330-200f"));
+            belavia.Add(new CargoAirplane("45785", "IL-76", 4000, 27.25) { CarryingCapacity = 60 });
+
+            Console.WriteLine("{0}'s list of airplanes", belavia.Name);
+
+            foreach (Plane a in belavia)
             {
                 Console.WriteLine(a);
             }
