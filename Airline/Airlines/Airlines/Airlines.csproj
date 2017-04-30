@@ -45,6 +45,7 @@
     <Compile Include="Classes\CargoAirplane.cs" />
     <Compile Include="Classes\ComparerByFlightLength.cs" />
     <Compile Include="Classes\Airlines.cs" />
+    <Compile Include="Classes\ShowSuitablePlanes.cs" />
     <Compile Include="Interfaces\ICarryingCapacity.cs" />
     <Compile Include="Interfaces\IPassengerCapacity.cs" />
     <Compile Include="Classes\PassengerAirplane.cs" />

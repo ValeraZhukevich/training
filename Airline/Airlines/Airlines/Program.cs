@@ -42,11 +42,9 @@ namespace Airlines
 
             Console.WriteLine("To find suitable airplane in fuel consumption per km");
             Console.WriteLine("----------------------------------------------------");
-            List<Plane> suitablePlanes = belavia.ToFindSuitablePlane(10.0);
-            foreach (Plane a in suitablePlanes)
-            {
-                Console.WriteLine(a);
-            }
+
+            ShowSuitablePlanes.Show(belavia, 10.0);
+            
 
             Console.ReadKey();
         }
