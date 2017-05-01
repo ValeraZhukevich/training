@@ -13,14 +13,15 @@ namespace Airlines
 
             Airlines belavia = new Airlines("BelAvia");
 
-            belavia.Add(new PassengerAirplane("25687", "a320"));            
+            belavia.Add(new PassengerAirplane("25687", "a320"));
             belavia.Add(new PassengerAirplane("98571", "747"));
+
             belavia.Add(new PassengerAirplane("10236", "a380"));
-            belavia.Add(new CargoAirplane("45785", "IL-76", 4000, 27.25) { CarryingCapacity = 60 });
+            belavia.Add(new CargoAirplane("45785", "IL-76", 4000, 27.25, 759) { CarryingCapacity = 60 });
             belavia.Add(new CargoAirplane("54782", "a330-200f"));
 
             Console.WriteLine("{0}'s list of airplanes", belavia.Name);
-            Console.WriteLine("--------------------------------------------------------------------");
+            Console.WriteLine(new string('-', 30));
 
             foreach (Plane a in belavia)
             {
@@ -28,7 +29,7 @@ namespace Airlines
             }
 
             Console.WriteLine("{0}'s list of airplanes after sorting by flight length", belavia.Name);
-            Console.WriteLine("--------------------------------------------------------------------");
+            Console.WriteLine(new string('-', 30));
 
             belavia.SortByFlightLength();
 
@@ -41,10 +42,15 @@ namespace Airlines
             Console.WriteLine("{0}'s total carrying capacity: {1} tones\n", belavia.Name, belavia.GetTotalCarryingCapacity());
 
             Console.WriteLine("To find suitable airplane in fuel consumption per km");
-            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine(new string('-', 30));
 
-            ShowSuitablePlanes.Show(belavia, 10.0);
-            
+            ShowSuitablePlanes.ShowByFuel(belavia, 10.0);
+
+            Console.WriteLine("To find suitable airplane by time");
+            Console.WriteLine(new string('-', 30));
+
+            ShowSuitablePlanes.ShowByTime(belavia, 1500, new TimeSpan(2, 0, 0));
+
 
             Console.ReadKey();
         }

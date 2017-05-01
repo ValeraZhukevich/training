@@ -16,6 +16,7 @@ namespace Airlines
             Name = name;
         }
 
+
         public Airlines()
         {
 
@@ -23,7 +24,8 @@ namespace Airlines
         
         private ICollection<Plane> airliners = new List<Plane>();
 
-        public List<Plane> ToFindSuitablePlane(double fuelConsumptionPerKM)
+
+        public List<Plane> FindSuitablePlaneByFuel(double fuelConsumptionPerKM)
         {
             List<Plane> suitPlanes = new List<Plane>();
             foreach(Plane a in airliners)
@@ -32,6 +34,25 @@ namespace Airlines
                 {
                     suitPlanes.Add(a);
                 }
+            }
+
+            return suitPlanes;
+
+        }
+
+        public List<Plane> FindSuitablePlaneByTime(int tripDistance, TimeSpan interval)
+        {
+            double hours = interval.TotalHours;
+            
+
+            List<Plane> suitPlanes = new List<Plane>();
+            foreach (Plane a in airliners)
+            {
+                if((((double)tripDistance / a.FlightSpeed) + 0.33 <= hours) && !a.IsInFlight) // 0.33 is needed time to take off and landing
+                {
+                    suitPlanes.Add(a);
+                }
+                
             }
 
             return suitPlanes;
@@ -125,9 +146,7 @@ namespace Airlines
             Sort(new ComparerByFlightLength());
         }
 
-        
 
-       
 
     }
 

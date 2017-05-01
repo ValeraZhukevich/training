@@ -11,14 +11,14 @@ namespace Airlines
 
         public int CarryingCapacity { get; set; }
 
-        public CargoAirplane(string id, string model, int flightLength, double fuelConsumptionPerKM)
-            : base(id, model, flightLength, fuelConsumptionPerKM)
+        public CargoAirplane(string id, string model, int flightLength, double fuelConsumptionPerKM, int flightSpeed)
+            : base(id, model, flightLength, fuelConsumptionPerKM, flightSpeed)
         {
 
         }
 
-        public CargoAirplane(string id, string model, int flightLength, double fuelConsumptionPerKM, int carryingCapacity)
-            : base(id, model, flightLength, fuelConsumptionPerKM)
+        public CargoAirplane(string id, string model, int flightLength, double fuelConsumptionPerKM, int flightSpeed, int carryingCapacity)
+            : base(id, model, flightLength, fuelConsumptionPerKM, flightSpeed)
         {
             CarryingCapacity = carryingCapacity; //tons
         }
@@ -34,12 +34,14 @@ namespace Airlines
                     FlightLength = 7400;
                     CarryingCapacity = 65;
                     FuelConsumptionPerKM = 13.18;
+                    FlightSpeed = 875;
                     break;
 
                 case "747-400f":
                     FlightLength = 13500;
                     CarryingCapacity = 121;
                     FuelConsumptionPerKM = 13.88;
+                    FlightSpeed = 980;
                     break;
 
             }
@@ -52,8 +54,9 @@ namespace Airlines
 
         public override string ToString()
         {
-            return string.Format("id: {0}\n model: {1}\n fligth length: {2}\n cargo capacity: {3}\n fuel consumption per km: {4}\n",
-                ID, Model, FlightLength, CarryingCapacity, FuelConsumptionPerKM);
+            return string.Format("id: {0}\n model: {1}\n fligth length: {2}\n cargo capacity: {3}\n fuel consumption per km: {4}\n" +
+                "flight speed: {5}\n",
+                ID, Model, FlightLength, CarryingCapacity, FuelConsumptionPerKM, FlightSpeed);
         }
 
 
