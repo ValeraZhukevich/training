@@ -49,7 +49,7 @@ namespace Airlines
             Console.WriteLine("To find suitable airplane by time");
             Console.WriteLine(new string('-', 30));
 
-            ShowSuitablePlanes.ShowByTime(belavia, 1500, new TimeSpan(2, 0, 0));
+            ShowSuitablePlanes.ShowByTime(belavia, 15000, new TimeSpan(2, 0, 0));
 
 
             Console.ReadKey();

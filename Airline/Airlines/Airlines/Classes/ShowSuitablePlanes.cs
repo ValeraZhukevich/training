@@ -11,7 +11,7 @@ namespace Airlines
         public static void ShowByFuel(Airlines airliners, double fuelEfficient)
         {
             List<Plane> suitablePlanes = airliners.FindSuitablePlaneByFuel(fuelEfficient);
-            if (suitablePlanes != null)
+            if (suitablePlanes.Count != 0)
             {
                 Console.WriteLine("Suitable planes by fuel efficient");
                 foreach (Plane a in suitablePlanes)
@@ -28,7 +28,7 @@ namespace Airlines
         public static void ShowByTime(Airlines airliners, int tripDistance, TimeSpan interval)
         {
             List<Plane> suitablePlanes = airliners.FindSuitablePlaneByTime(tripDistance, interval);
-            if (suitablePlanes != null)
+            if (suitablePlanes.Count != 0)
             {
                 Console.WriteLine("Suitable planes by time");
                 foreach (Plane a in suitablePlanes)
