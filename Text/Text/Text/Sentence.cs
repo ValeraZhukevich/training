@@ -8,13 +8,20 @@ namespace Text
 {
     public class Sentence
     {
-        public int pageNumber;
-        public string content;
-        public int numberTheSentenceOnPage;
+        public int PageNumber { get; }
+        public string Content { get; }
+        public int NumberTheSentenceOnPage { get; }
+
+        public Sentence(string content, int pageNumber, int numberTheSentenceOnPage)
+        {
+            Content = content;
+            PageNumber = pageNumber;
+            NumberTheSentenceOnPage = numberTheSentenceOnPage;
+        }
 
         public override string ToString()
         {
-            return content;
+            return Content;
         }
     }
 }

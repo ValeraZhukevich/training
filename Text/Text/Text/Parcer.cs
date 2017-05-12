@@ -12,11 +12,13 @@ namespace Text
         const int numberOfSentencesOnPage = 15;
         List<Sentence> listOfSentences = new List<Sentence>();
         List<Word> listOfWords = new List<Word>();
+        List<UnicWord> listOfUnicWord = new List<UnicWord>();
 
         public void Send(string path)
         {
             StreamReader reader = File.OpenText(path);
             string allText = reader.ReadToEnd();
+            reader.Close();
 
             char[] splittersForSentence = { '.', '!', '?' };
             char[] splittersForWords = new char[] { '\n', ',', '/', ':', '+', '-', ';', '%', '(', ')', '_', ' ', '\t', '\r' };
@@ -32,17 +34,28 @@ namespace Text
                     pageNumber++;
                     numberTheSentenceOnThisPage = 1;
                 }
-                    
-                listOfSentences.Add(new Sentence() { content = sentences[i], pageNumber = pageNumber, numberTheSentenceOnPage = numberTheSentenceOnThisPage });
+
+                listOfSentences.Add(new Sentence(sentences[i], pageNumber, numberTheSentenceOnThisPage));
             }
 
             foreach(Sentence sentence in listOfSentences)
             {
-                string[] words = sentence.content.Split(splittersForWords, StringSplitOptions.RemoveEmptyEntries);
+                string[] words = sentence.Content.Split(splittersForWords, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach(string word in words)
                 {
-                    listOfWords.Add(new Word() { content = word, pageNumber = sentence.pageNumber });                        
+                    listOfWords.Add(new Word(word, sentence.PageNumber));                        
+                }
+            }
+
+            foreach(Word word in listOfWords)
+            {
+                foreach(UnicWord unicword in listOfUnicWord)
+                {
+                    if (word.Content != unicword.Content)
+                        listOfUnicWord.Add(new UnicWord(word.Content, word.PageNumber));
+                    else
+                        unicword.AddToExistUnicWord(word.PageNumber);
                 }
             }
         }
@@ -54,6 +67,20 @@ namespace Text
             {
                 Console.WriteLine(word);
             }
+        }
+
+        public void WriteToFile(string path)
+        {
+            StreamWriter writer = new StreamWriter(path);
+
+  
+
+            foreach (UnicWord unicWord in listOfUnicWord)
+            {
+                writer.WriteLine(unicWord);
+            }
+
+            writer.Close();
         }
     }
 }

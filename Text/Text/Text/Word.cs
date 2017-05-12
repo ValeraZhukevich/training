@@ -8,14 +8,19 @@ namespace Text
 {
     public class Word
     {
-        public string content;
-        private char firstLetterOfTheWord;
-        public int pageNumber;
-        public char FirstLetterOfTheWord { get { return content[0]; } }
+        public string Content { get; }
+        public int PageNumber { get; }
+        public char FirstLetterOfTheWord { get { return Content[0]; } }
+        
+        public Word(string content, int pageNumber)
+        {
+            Content = content;
+            PageNumber = pageNumber;
+        }
 
         public override string ToString()
         {
-            return content;
+            return Content;
         }
     }
 }

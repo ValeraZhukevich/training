@@ -13,7 +13,8 @@ namespace Text
         {
             Parcer parc = new Parcer();
             parc.Send("TestText.txt");
-            parc.Show();
+
+            parc.WriteToFile("Result.txt");
 
             Console.ReadKey();
 
