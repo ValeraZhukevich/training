@@ -12,12 +12,14 @@ namespace Text
         const int numberOfSentencesOnPage = 15;
         List<Sentence> listOfSentences = new List<Sentence>();
         List<Word> listOfWords = new List<Word>();
-        List<UnicWord> listOfUnicWord = new List<UnicWord>();
+        List<Word> listOfUnicWord = new List<Word>();
+
+
 
         public void Send(string path)
         {
             StreamReader reader = File.OpenText(path);
-            string allText = reader.ReadToEnd();
+            string allText = reader.ReadToEnd().ToLower();
             reader.Close();
 
             char[] splittersForSentence = { '.', '!', '?' };
@@ -47,16 +49,11 @@ namespace Text
                     listOfWords.Add(new Word(word, sentence.PageNumber));                        
                 }
             }
+      
 
-            foreach(Word word in listOfWords)
+            foreach (Word unic in listOfUnicWord)
             {
-                foreach(UnicWord unicword in listOfUnicWord)
-                {
-                    if (word.Content != unicword.Content)
-                        listOfUnicWord.Add(new UnicWord(word.Content, word.PageNumber));
-                    else
-                        unicword.AddToExistUnicWord(word.PageNumber);
-                }
+                Console.WriteLine(unic);
             }
         }
 
@@ -75,7 +72,7 @@ namespace Text
 
   
 
-            foreach (UnicWord unicWord in listOfUnicWord)
+            foreach(Word unicWord in listOfUnicWord)
             {
                 writer.WriteLine(unicWord);
             }

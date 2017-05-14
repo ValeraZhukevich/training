@@ -9,13 +9,22 @@ namespace Text
     public class Word
     {
         public string Content { get; }
-        public int PageNumber { get; }
+       
+        private List<int> pageNumbers = new List<int>();
         public char FirstLetterOfTheWord { get { return Content[0]; } }
+
+        public List<int> PageNumbers
+        {
+            get
+            {
+                return pageNumbers;
+            }
+        }
         
         public Word(string content, int pageNumber)
         {
             Content = content;
-            PageNumber = pageNumber;
+            pageNumbers.Add(pageNumber);
         }
 
         public override string ToString()
