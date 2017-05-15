@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Text
 {
-    class UnicWord : Word
+    class UnicWord 
     {
         public List<int> listOfPages = new List<int>();
         private int unicWordCount;
+        public string Content { get; }
+        private int count;
 
-        public UnicWord(string content, int pageNumber)
-            : base(content, pageNumber)
+        public UnicWord(string content)
+            
         {
-
-            unicWordCount = 1;
+            
+            
         }
 
         public void AddToExistUnicWord(int pageNumber)

@@ -44,10 +44,28 @@ namespace Text
             {
                 string[] words = sentence.Content.Split(splittersForWords, StringSplitOptions.RemoveEmptyEntries);
 
-                foreach(string word in words)
+
+
+                foreach (string word in words)
                 {
                     listOfWords.Add(new Word(word, sentence.PageNumber));                        
                 }
+            }
+
+            var queryUnicWord =
+                from word in listOfWords
+                orderby word.Content
+                group word by word.Content;
+                
+
+            foreach(var unicWordGroup in queryUnicWord)
+            {
+                Console.Write("{0}.......{1}: ", unicWordGroup.Key, unicWordGroup.Count());
+                foreach(Word word in unicWordGroup)
+                {
+                    Console.Write(" {0}", word.PageNumber);
+                }
+                Console.WriteLine();
             }
       
 

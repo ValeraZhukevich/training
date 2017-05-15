@@ -10,21 +10,14 @@ namespace Text
     {
         public string Content { get; }
        
-        private List<int> pageNumbers = new List<int>();
+        public int PageNumber { get; }
         public char FirstLetterOfTheWord { get { return Content[0]; } }
 
-        public List<int> PageNumbers
-        {
-            get
-            {
-                return pageNumbers;
-            }
-        }
-        
+
         public Word(string content, int pageNumber)
         {
             Content = content;
-            pageNumbers.Add(pageNumber);
+            PageNumber = pageNumber;
         }
 
         public override string ToString()
