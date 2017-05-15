@@ -12,7 +12,7 @@ namespace Text
         const int numberOfSentencesOnPage = 15;
         List<Sentence> listOfSentences = new List<Sentence>();
         List<Word> listOfWords = new List<Word>();
-        List<Word> listOfUnicWord = new List<Word>();
+        List<UnicWord> listOfUnicWord = new List<UnicWord>();
 
 
 
@@ -60,16 +60,25 @@ namespace Text
 
             foreach(var unicWordGroup in queryUnicWord)
             {
-                Console.Write("{0}.......{1}: ", unicWordGroup.Key, unicWordGroup.Count());
-                foreach(Word word in unicWordGroup)
+                //Console.Write("{0}.......{1}: ", unicWordGroup.Key, unicWordGroup.Count());
+                //foreach(Word word in unicWordGroup)
+                //{
+                //    Console.Write(" {0}", word.PageNumber);
+                //}
+                //Console.WriteLine();
+                List<int> temp = new List<int>();
+                foreach (Word word in unicWordGroup)
                 {
-                    Console.Write(" {0}", word.PageNumber);
+                    temp.Add(word.PageNumber);
                 }
+
+                listOfUnicWord.Add(new UnicWord(unicWordGroup.Key, temp));
+
                 Console.WriteLine();
             }
-      
 
-            foreach (Word unic in listOfUnicWord)
+
+            foreach (UnicWord unic in listOfUnicWord)
             {
                 Console.WriteLine(unic);
             }
@@ -90,7 +99,7 @@ namespace Text
 
   
 
-            foreach(Word unicWord in listOfUnicWord)
+            foreach(UnicWord unicWord in listOfUnicWord)
             {
                 writer.WriteLine(unicWord);
             }

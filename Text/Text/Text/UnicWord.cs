@@ -8,28 +8,28 @@ namespace Text
 {
     class UnicWord 
     {
-        public List<int> listOfPages = new List<int>();
-        private int unicWordCount;
+        public List<int> ListOfPages { get; }
+        private int UnicWordCount { get { return ListOfPages.Count; } }
         public string Content { get; }
-        private int count;
+       
 
-        public UnicWord(string content)
+        public UnicWord(string content, List<int> listOfPages)
             
         {
-            
-            
+            Content = content;
+            ListOfPages = listOfPages; 
         }
 
-        public void AddToExistUnicWord(int pageNumber)
-        {
-            unicWordCount++;
-            if (!listOfPages.Contains(pageNumber))
-                listOfPages.Add(pageNumber);
-        }
+        //public void AddToExistUnicWord(int pageNumber)
+        //{
+        //    unicWordCount++;
+        //    if (!listOfPages.Contains(pageNumber))
+        //        listOfPages.Add(pageNumber);
+        //}
 
         public override string ToString()
         {
-            return string.Format("{0} ...........{1}: {2}", Content, unicWordCount, listOfPages.ToString());
+            return string.Format("{0} ...........{1}: {2}", Content, UnicWordCount, ListOfPages);
         }
 
     }
