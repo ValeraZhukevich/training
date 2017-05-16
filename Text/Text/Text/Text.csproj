@@ -42,9 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IWord.cs" />
+    <Compile Include="Interface\IWord.cs" />
     <Compile Include="Parcer.cs" />
-    <Compile Include="PrinterToFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sentence.cs" />

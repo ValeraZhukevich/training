@@ -10,9 +10,9 @@ namespace Text
     public class Parcer
     {
         const int numberOfSentencesOnPage = 10;
-        List<Sentence> listOfSentences = new List<Sentence>();
-        List<Word> listOfWords = new List<Word>();
-        List<UnicWord> listOfUnicWord = new List<UnicWord>();
+        IList<Sentence> listOfSentences = new List<Sentence>();
+        IList<Word> listOfWords = new List<Word>();
+        IList<UnicWord> listOfUnicWord = new List<UnicWord>();
 
 
 
@@ -56,7 +56,7 @@ namespace Text
                     foreach (var unicWordGroup in queryUnicWord)
                     {
 
-                        List<int> temp = new List<int>();
+                        IList<int> temp = new List<int>();
                         foreach (Word word in unicWordGroup)
                         {
                             temp.Add(word.PageNumber);

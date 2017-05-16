@@ -10,12 +10,12 @@ namespace Text
     {
         public string Content { get; }
         public char FirstLetter { get { return Content[0]; } }
-        public List<int> ListOfPages { get; }
+        public IList<int> ListOfPages { get; }
         private int UnicWordCount { get { return ListOfPages.Count; } }
 
-        public List<int> GetListOfUnicPages()
+        public IList<int> GetListOfUnicPages()
         {
-            List<int> listOfUnicPages = new List<int>();
+            IList<int> listOfUnicPages = new List<int>();
             foreach(int page in ListOfPages)
             {
                 if (!listOfUnicPages.Contains(page))
@@ -27,7 +27,7 @@ namespace Text
         }
 
 
-        public UnicWord(string content, List<int> listOfPages)
+        public UnicWord(string content, IList<int> listOfPages)
 
         {
             Content = content;

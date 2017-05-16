@@ -10,7 +10,7 @@ namespace Text
     {
         public int NumberOfSentences { get { return ListOfSenteces.Count(); } }
         public int NumberOfWords;
-        private const int numberOfSentencesOnPage = 15;
-        public List<Sentence> ListOfSenteces { get; }
+        private const int numberOfSentencesOnPage = 10;
+        public IList<Sentence> ListOfSenteces { get; }
     }
 }
