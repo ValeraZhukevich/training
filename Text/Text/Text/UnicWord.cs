@@ -6,31 +6,42 @@ using System.Threading.Tasks;
 
 namespace Text
 {
-    class UnicWord 
+    class UnicWord : IWord
     {
+        public string Content { get; }
+        public char FirstLetter { get { return Content[0]; } }
         public List<int> ListOfPages { get; }
         private int UnicWordCount { get { return ListOfPages.Count; } }
-        public string Content { get; }
-       
+
+        public List<int> GetListOfUnicPages()
+        {
+            List<int> listOfUnicPages = new List<int>();
+            foreach(int page in ListOfPages)
+            {
+                if (!listOfUnicPages.Contains(page))
+                {
+                    listOfUnicPages.Add(page);
+                }
+            }
+            return listOfUnicPages;  
+        }
+
 
         public UnicWord(string content, List<int> listOfPages)
-            
+
         {
             Content = content;
-            ListOfPages = listOfPages; 
+            ListOfPages = listOfPages;
         }
 
-        //public void AddToExistUnicWord(int pageNumber)
-        //{
-        //    unicWordCount++;
-        //    if (!listOfPages.Contains(pageNumber))
-        //        listOfPages.Add(pageNumber);
-        //}
-
+ 
         public override string ToString()
         {
-            return string.Format("{0} ...........{1}: {2}", Content, UnicWordCount, ListOfPages);
+            return string.Format("{0} .....{1}:", Content, UnicWordCount);
+            
         }
+
+
 
     }
 }

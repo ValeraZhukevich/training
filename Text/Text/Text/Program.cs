@@ -12,7 +12,7 @@ namespace Text
         static void Main(string[] args)
         {
             Parcer parc = new Parcer();
-            parc.Send("TestText.txt");
+            parc.Send("SomeText.txt");
 
             parc.WriteToFile("Result.txt");
 

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Text
 {
-    class Text
+    public class Text
     {
+        public int NumberOfSentences { get { return ListOfSenteces.Count(); } }
+        public int NumberOfWords;
+        private const int numberOfSentencesOnPage = 15;
+        public List<Sentence> ListOfSenteces { get; }
     }
 }

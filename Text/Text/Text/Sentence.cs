@@ -10,14 +10,15 @@ namespace Text
     {
         public int PageNumber { get; }
         public string Content { get; }
-        public int NumberTheSentenceOnPage { get; }
 
-        public Sentence(string content, int pageNumber, int numberTheSentenceOnPage)
+
+        public Sentence(string content, int pageNumber)
         {
             Content = content;
             PageNumber = pageNumber;
-            NumberTheSentenceOnPage = numberTheSentenceOnPage;
         }
+
+
 
         public override string ToString()
         {

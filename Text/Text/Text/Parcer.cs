@@ -9,7 +9,7 @@ namespace Text
 {
     public class Parcer
     {
-        const int numberOfSentencesOnPage = 15;
+        const int numberOfSentencesOnPage = 10;
         List<Sentence> listOfSentences = new List<Sentence>();
         List<Word> listOfWords = new List<Word>();
         List<UnicWord> listOfUnicWord = new List<UnicWord>();
@@ -18,78 +18,66 @@ namespace Text
 
         public void Send(string path)
         {
-            StreamReader reader = File.OpenText(path);
-            string allText = reader.ReadToEnd().ToLower();
-            reader.Close();
-
             char[] splittersForSentence = { '.', '!', '?' };
-            char[] splittersForWords = new char[] { '\n', ',', '/', ':', '+', '-', ';', '%', '(', ')', '_', ' ', '\t', '\r' };
+            char[] splittersForWords = new char[] { '\n', ',', '/', ':', '+', '-', ';', '%', '(', ')', '_', ' ', '\t', '\r', '"', '[', ']', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-            string[] sentences = allText.Split(splittersForSentence, StringSplitOptions.RemoveEmptyEntries);
-
-            int pageNumber = 1;
-            int numberTheSentenceOnThisPage = 1;
-            for (int i = 0; i < sentences.Length; i++)
+            try
             {
-                if (numberTheSentenceOnThisPage > numberOfSentencesOnPage)
+                using (StreamReader reader = File.OpenText(path))
                 {
-                    pageNumber++;
-                    numberTheSentenceOnThisPage = 1;
+                    string allText = reader.ReadToEnd().ToLower();
+                    string[] sentences = allText.Split(splittersForSentence, StringSplitOptions.RemoveEmptyEntries);
+
+                    int pageNumber = 1;
+                    int numberSentence = 0; 
+                    for (int i = 0; i < sentences.Length; i++)
+                    {
+                        numberSentence++;
+                        pageNumber = (int)Math.Ceiling((double)(numberSentence / numberOfSentencesOnPage) + 1);                    
+                        listOfSentences.Add(new Sentence(sentences[i], pageNumber));
+                    }
+
+                    foreach (Sentence sentence in listOfSentences)
+                    {
+                        string[] words = sentence.Content.Split(splittersForWords, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string word in words)
+                        {
+                            listOfWords.Add(new Word(word, sentence.PageNumber));
+                        }
+                    }
+
+                    var queryUnicWord =
+                        from word in listOfWords
+                        orderby word.Content
+                        group word by word.Content;
+
+
+                    foreach (var unicWordGroup in queryUnicWord)
+                    {
+
+                        List<int> temp = new List<int>();
+                        foreach (Word word in unicWordGroup)
+                        {
+                            temp.Add(word.PageNumber);
+                        }
+
+                        listOfUnicWord.Add(new UnicWord(unicWordGroup.Key, temp));
+
+                    }
+
+
+                    foreach (UnicWord unic in listOfUnicWord)
+                    {
+                        Console.WriteLine(unic);
+                    }
+
                 }
-
-                listOfSentences.Add(new Sentence(sentences[i], pageNumber, numberTheSentenceOnThisPage));
             }
 
-            foreach(Sentence sentence in listOfSentences)
+            catch (Exception e)
             {
-                string[] words = sentence.Content.Split(splittersForWords, StringSplitOptions.RemoveEmptyEntries);
-
-
-
-                foreach (string word in words)
-                {
-                    listOfWords.Add(new Word(word, sentence.PageNumber));                        
-                }
-            }
-
-            var queryUnicWord =
-                from word in listOfWords
-                orderby word.Content
-                group word by word.Content;
-                
-
-            foreach(var unicWordGroup in queryUnicWord)
-            {
-                //Console.Write("{0}.......{1}: ", unicWordGroup.Key, unicWordGroup.Count());
-                //foreach(Word word in unicWordGroup)
-                //{
-                //    Console.Write(" {0}", word.PageNumber);
-                //}
-                //Console.WriteLine();
-                List<int> temp = new List<int>();
-                foreach (Word word in unicWordGroup)
-                {
-                    temp.Add(word.PageNumber);
-                }
-
-                listOfUnicWord.Add(new UnicWord(unicWordGroup.Key, temp));
-
-                Console.WriteLine();
-            }
-
-
-            foreach (UnicWord unic in listOfUnicWord)
-            {
-                Console.WriteLine(unic);
-            }
-        }
-
-        public void Show()
-        {
-            Console.WriteLine(listOfWords.Count);
-            foreach (Word word in listOfWords)
-            {
-                Console.WriteLine(word);
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -97,14 +85,38 @@ namespace Text
         {
             StreamWriter writer = new StreamWriter(path);
 
-  
+            var queryUnicWordsByFirstLetter =
+                        from unicWord in listOfUnicWord
+                        orderby unicWord.FirstLetter
+                        group unicWord by unicWord.FirstLetter;
 
-            foreach(UnicWord unicWord in listOfUnicWord)
+            foreach(var unicWordsGroupByFirsLetter in queryUnicWordsByFirstLetter)
             {
-                writer.WriteLine(unicWord);
+                writer.WriteLine(unicWordsGroupByFirsLetter.Key.ToString().ToUpper());
+
+                foreach (UnicWord unicWord in unicWordsGroupByFirsLetter)
+                {
+                    writer.Write(unicWord);
+                    List<int> temp = unicWord.GetListOfUnicPages();
+                    for (int i = 0; i < temp.Count; i++)
+                    {
+                        if (i != temp.Count - 1)
+                        {
+                            writer.Write(" {0},", temp[i]);
+                        }
+                        else
+                        {
+                            writer.Write(" {0}", temp[i]);
+                        }
+
+                    }
+                    writer.WriteLine();
+                }
+                writer.WriteLine();
             }
 
             writer.Close();
         }
+
     }
 }

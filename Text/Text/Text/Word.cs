@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Text
 {
-    public class Word
+    public class Word : IWord
     {
         public string Content { get; }
-       
+        public char FirstLetter { get { return Content[0]; } }
+
         public int PageNumber { get; }
         public char FirstLetterOfTheWord { get { return Content[0]; } }
 
